@@ -4,7 +4,7 @@ Flutter e-commerce project for Ostad batch 13.
 
 ## Set up
 
-Flutter Version - 3.35.7
+Flutter Version - 3.38.9
 
 ## multiple flutter version setup 
 
