@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+// important setup must be apply
+// 1. Firebase set up
+// 2. Crashlytics setup
+// 3. Analytics setup
+// 4. Localization setup
+// 5. Architecture Design
+// 6. Theming setup
+
+
 void main() {
   runApp(const MyApp());
 }
