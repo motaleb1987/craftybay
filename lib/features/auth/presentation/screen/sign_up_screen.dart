@@ -1,5 +1,6 @@
 import 'package:craftybay/app/extensions/localization_extension.dart';
 import 'package:craftybay/app/providers/localization_provider.dart';
+import 'package:craftybay/features/shared/presentation/widgets/theme_switcher.dart';
 import 'package:craftybay/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +25,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       body: Column(
         children: [
           // LanguageSwitcher()
+          ThemeSwitcher()
         ],
       ),
     );
