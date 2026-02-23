@@ -48,4 +48,4 @@ app.*.map.json
 .fvm/
 
 # Localization generated files
-lib/l10n/app_localizations*.dart
+#lib/l10n/app_localizations*.dart
