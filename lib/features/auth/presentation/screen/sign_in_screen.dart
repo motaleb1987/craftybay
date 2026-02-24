@@ -1,27 +1,23 @@
+import 'package:craftybay/app/app_colors.dart';
 import 'package:craftybay/app/extensions/utils_extension.dart';
+import 'package:craftybay/features/auth/presentation/screen/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/app_logo.dart';
-import 'sign_in_screen.dart';
-import 'verify_otp_screen.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
-  static const String name = '/sign-up';
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({super.key});
+  static const String name = '/sign-In';
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
 // LanguageSwitcher()
 //ThemeSwitcher()
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _lastNameController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
-  final TextEditingController _cityController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -39,14 +35,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
               key: _formKey,
               child: Column(
                 children: [
+                  const SizedBox(height: 48,),
                   AppLogo(width: 100, height: 100),
                   const SizedBox(height: 16,),
                   Text(
-                    context.l10n.createAcc,
+                    context.l10n.loginTitle,
                     style: context.textTheme.titleLarge,
                   ),
                   Text(
-                    context.l10n.getStart,
+                    context.l10n.loginDescription,
                     style: Theme.of(
                       context,
                     ).textTheme.bodyLarge?.copyWith(color: Colors.grey),
@@ -60,39 +57,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       hintText: 'Email',
                     ),
                   ),
-                  const SizedBox(height: 8,),
-                  TextFormField(
-                    controller: _firstNameController,
-                    textInputAction: TextInputAction.next,
-                    decoration: InputDecoration(
-                        hintText: 'First Name',
-                    ),
-                  ),
-                  const SizedBox(height: 8,),
-                  TextFormField(
-                    controller: _lastNameController,
-                    textInputAction: TextInputAction.next,
-                    decoration: InputDecoration(
-                      hintText: 'Last Name',
-                    ),
-                  ),
-                  const SizedBox(height: 8,),
-                  TextFormField(
-                    controller: _phoneController,
-                    keyboardType: TextInputType.number,
-                    textInputAction: TextInputAction.next,
-                    decoration: InputDecoration(
-                      hintText: 'Phone',
-                    ),
-                  ),
-                  const SizedBox(height: 8,),
-                  TextFormField(
-                    controller: _cityController,
-                    textInputAction: TextInputAction.next,
-                    decoration: InputDecoration(
-                      hintText: 'City',
-                    ),
-                  ),
+
                   const SizedBox(height: 8,),
                   TextFormField(
                     controller: _passwordController,
@@ -110,10 +75,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   const SizedBox(height: 16,),
                   FilledButton(
-                      onPressed: _onTapSignUpButton, child: Text('Sign Up')),
+                      onPressed: _onTapSignInButton, child: Text('Sign In')),
 
                   const SizedBox(height: 16,),
-                  TextButton(onPressed: _onTapSignInButton, child: Text('Sign In'))
+                  TextButton(onPressed: _onTapSignUpButton, child: Text('Sign Up'))
                 ],
               ),
             ),
@@ -123,21 +88,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
+  void _onTapSignInButton(){}
   void _onTapSignUpButton(){
-    Navigator.pushNamed(context, VerifyOtpScreen.name);
-  }
-
-  void _onTapSignInButton(){
-    Navigator.pushNamed(context, SignInScreen.name);
+    Navigator.pop(context);
   }
 
   @override
   void dispose() {
    _emailController.dispose();
-   _firstNameController.dispose();
-   _lastNameController.dispose();
-   _passwordController.dispose();
-   _cityController.dispose();
    _passwordController.dispose();
     super.dispose();
   }

@@ -2,5 +2,9 @@
   "appName": "Crafty Bay",
   "signUp": "Sign up",
   "createAcc": "Create Your Account",
-  "getStart": "Get started with your details"
+  "getStart": "Get started with your details",
+  "loginTitle": "Login to your Account",
+  "loginDescription": "Sign In with your account details",
+  "otpCode": "Enter OTP Code",
+  "otpDescription": "A 4 digit opt has been sent to your email address"
 }
