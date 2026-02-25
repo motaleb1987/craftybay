@@ -1,9 +1,10 @@
-import 'package:craftybay/app/app_colors.dart';
 import 'package:craftybay/app/extensions/utils_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
+import '../../../../app/app_colors.dart';
 import '../widgets/app_logo.dart';
+import '../widgets/resend_otp_section.dart';
 
 class VerifyOtpScreen extends StatefulWidget {
   const VerifyOtpScreen({super.key});
@@ -69,14 +70,8 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                       onPressed: _onTapSignInButton, child: Text('Verify')),
 
                   const SizedBox(height: 16,),
-                  RichText(text: TextSpan(
-                    style: TextStyle(color: Colors.black54),
-                    children: [
-                      TextSpan(text: 'You can resend OTP after '),
-                      TextSpan(text: '10s', style: TextStyle(color: AppColors.themeColor, fontWeight: FontWeight.w600)),
-                    ]
-                  )),
-                  TextButton(onPressed: _onTapSignUpButton, child: Text('Resent OTP'))
+                  ResendOtpSection(),
+
                 ],
               ),
             ),
@@ -98,6 +93,8 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
   }
 
 }
+
+
 
 
 
