@@ -6,6 +6,7 @@ import '../features/auth/presentation/screen/sign_in_screen.dart';
 import '../features/auth/presentation/screen/sign_up_screen.dart';
 import '../features/auth/presentation/screen/splash_screen.dart';
 import '../features/auth/presentation/screen/verify_otp_screen.dart';
+import '../features/shared/presentation/screens/main_nav_holder_screen.dart';
 
 class Routes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -20,6 +21,9 @@ class Routes {
         widget = SignInScreen();
         case VerifyOtpScreen.name:
       widget = VerifyOtpScreen();
+      case MainNavHolderScreen.name:
+        widget = MainNavHolderScreen();
+
     }
     return  MaterialPageRoute(builder: (context) => widget);
   }
