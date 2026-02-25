@@ -1,7 +1,8 @@
-import 'package:craftybay/app/extensions/utils_extension.dart';
+
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
+import '../../../../app/extensions/utils_extension.dart';
 import '../../../../app/app_colors.dart';
 import '../widgets/app_logo.dart';
 import '../widgets/resend_otp_section.dart';
@@ -82,9 +83,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
   }
 
   void _onTapSignInButton(){}
-  void _onTapSignUpButton(){
-    Navigator.pop(context);
-  }
+
 
   @override
   void dispose() {
