@@ -1,11 +1,12 @@
 import 'package:craftybay/app/app_colors.dart';
-import 'package:craftybay/features/auth/presentation/providers/main_nav_provider.dart';
-import 'package:craftybay/features/category/presentation/screens/category_list_screen.dart';
-import 'package:craftybay/features/wish_list/presentation/screens/wish_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../auth/presentation/providers/main_nav_provider.dart';
+import '../../../cart/presentation/screen/cart_list_screen.dart';
+import '../../../category/presentation/screens/category_list_screen.dart';
 import '../../../home/presentation/screens/home_screen.dart';
+import '../../../wish_list/presentation/screens/wish_list_screen.dart';
 
 class MainNavHolderScreen extends StatefulWidget {
   const MainNavHolderScreen({super.key});
@@ -20,7 +21,7 @@ class _MainNavHolderScreenState extends State<MainNavHolderScreen> {
   final List<Widget> _screens = [
     HomeScreen(),
     CategoryListScreen(),
-    SizedBox(),
+    CartListScreen(),
     WishListScreen(),
   ];
 
