@@ -8,7 +8,8 @@ class AppTheme {
     progressIndicatorTheme: _progressThemeData,
     textTheme: _textTheme,
     inputDecorationTheme: _inputDecorationTheme,
-    filledButtonTheme: _filledButtonTheme
+    filledButtonTheme: _filledButtonTheme,
+    appBarTheme: _appBarTheme,
   );
   static final ThemeData _darkThemeData = ThemeData(
     colorSchemeSeed: AppColors.themeColor,
@@ -16,66 +17,56 @@ class AppTheme {
     progressIndicatorTheme: _progressThemeData,
     textTheme: _textTheme,
     inputDecorationTheme: _inputDecorationTheme,
-      filledButtonTheme: _filledButtonTheme
+    filledButtonTheme: _filledButtonTheme,
+    appBarTheme: _appBarTheme,
   );
 
   static TextTheme get _textTheme => TextTheme(
-        titleLarge: TextStyle(
-        fontSize: 24,
-        fontWeight: FontWeight.bold
-        )
-      );
+    titleLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+  );
 
 
-  static InputDecorationTheme get _inputDecorationTheme => InputDecorationTheme(
-      hintStyle: TextStyle(color: Colors.grey),
-      contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-      border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-              color: AppColors.themeColor,
-              width: 1
-          )
-      ),
-      enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-              color: AppColors.themeColor,
-              width: 1
-          )
-      ),
-      focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-              color: AppColors.themeColor,
-              width: 1
-          )
-      ),
-      errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-              color: Colors.red,
-              width: 1
-          )
+  static AppBarTheme get _appBarTheme => AppBarTheme(
+      titleTextStyle: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: Colors.black54
       )
   );
 
+  static InputDecorationTheme get _inputDecorationTheme => InputDecorationTheme(
+    hintStyle: TextStyle(color: Colors.grey),
+    contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(color: AppColors.themeColor, width: 1),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(color: AppColors.themeColor, width: 1),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(color: AppColors.themeColor, width: 1),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(color: Colors.red, width: 1),
+    ),
+  );
+
   static FilledButtonThemeData get _filledButtonTheme => FilledButtonThemeData(
-      style: FilledButton.styleFrom(
-          backgroundColor: AppColors.themeColor,
-          padding: EdgeInsets.symmetric(vertical: 12),
-          fixedSize: Size.fromWidth(double.maxFinite),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8)
-          )
-      )
+    style: FilledButton.styleFrom(
+      backgroundColor: AppColors.themeColor,
+      padding: EdgeInsets.symmetric(vertical: 12),
+      fixedSize: Size.fromWidth(double.maxFinite),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+    ),
   );
 
   static ProgressIndicatorThemeData get _progressThemeData {
     return ProgressIndicatorThemeData(color: AppColors.themeColor);
   }
-
-
 
   static ThemeData get lightTheme => _lightThemeData;
   static ThemeData get darkTheme => _darkThemeData;

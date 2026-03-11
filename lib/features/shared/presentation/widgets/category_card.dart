@@ -21,11 +21,19 @@ class CategoryCard extends StatelessWidget {
               child: Icon(Icons.laptop, size: 48, color: AppColors.themeColor,),
             ),
           ),
-          Text('Electronics', style: context.textTheme.bodyLarge?.copyWith(
+          Text(getTitle('Electronics, Computer Others product'), style: context.textTheme.bodyLarge?.copyWith(
               color: AppColors.themeColor,
               fontWeight: FontWeight.w600
           ),),
         ]
     );
   }
+
+  String getTitle(String title) {
+    if (title.length > 10) {
+      return title.substring(0, 10) + '...';
+    }
+    return title;
+  }
+
 }
