@@ -1,6 +1,7 @@
 import 'package:craftybay/app/app_colors.dart';
 import 'package:craftybay/features/auth/presentation/providers/main_nav_provider.dart';
 import 'package:craftybay/features/category/presentation/screens/category_list_screen.dart';
+import 'package:craftybay/features/wish_list/presentation/screens/wish_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +21,7 @@ class _MainNavHolderScreenState extends State<MainNavHolderScreen> {
     HomeScreen(),
     CategoryListScreen(),
     SizedBox(),
-    SizedBox(),
+    WishListScreen(),
   ];
 
 
