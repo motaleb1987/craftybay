@@ -1,8 +1,12 @@
+import 'package:craftybay/app/app_colors.dart';
 import 'package:craftybay/app/asset_paths.dart';
+import 'package:craftybay/app/constants.dart';
 import 'package:craftybay/features/auth/presentation/providers/main_nav_provider.dart';
 import 'package:craftybay/features/shared/presentation/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../../shared/presentation/widgets/increment_decrement_button.dart';
 
 class CartListScreen extends StatefulWidget {
   const CartListScreen({super.key});
@@ -28,19 +32,68 @@ class _CartListScreenState extends State<CartListScreen> {
           ),
         ),
         body: ListView.builder(
-          itemCount: 4,
-            itemBuilder: (context, index){
-              return ListTile(
+          padding: EdgeInsets.all(5),
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return Card(
+              color: Colors.white,
+              elevation: 0.25,
+              child: ListTile(
                 leading: Container(
                   width: 80,
                   height: 100,
                   child: Image.asset(AssetPaths.dummyShoePng),
                 ),
-                title: Text('Nike A34RF - New edition 2026 Alpha'),
-              );
-            }
+                title: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'New Year Special Shoe',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black54,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Icon(
+                                Icons.delete_rounded,
+                                color: Colors.black38,
+                                size: 30,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'Color: Red, Size: XL',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black54,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 16),
+                          IncrementDecrementBtn(),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
         ),
       ),
     );
   }
 }
+
+
