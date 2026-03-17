@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../app/app_colors.dart';
 import '../../../../app/asset_paths.dart';
 import '../../../../app/constants.dart';
+import '../../../product/presentation/screens/product_details_screen.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
@@ -11,68 +12,73 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 180,
-      child: Card(
-        elevation: 2,
-        shadowColor: AppColors.themeColor.withAlpha(30),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
-        color: Colors.white,
-        child: Column(
-          children: [
-            Container(
-              width: 180,
-              height: 140,
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: AppColors.themeColor.withAlpha(20),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16),
-                  topRight: Radius.circular(16),
+    return GestureDetector(
+      onTap: (){
+        Navigator.pushNamed(context, ProductDetailsScreen.name);
+      },
+      child: SizedBox(
+        width: 180,
+        child: Card(
+          elevation: 2,
+          shadowColor: AppColors.themeColor.withAlpha(30),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          color: Colors.white,
+          child: Column(
+            children: [
+              Container(
+                width: 180,
+                height: 140,
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: AppColors.themeColor.withAlpha(20),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(16),
+                    topRight: Radius.circular(16),
+                  ),
+                ),
+                child: Image.asset(AssetPaths.dummyShoePng),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: Column(
+                  spacing: 4,
+                  children: [
+                    Text('Nike A34RF - New edition 2026 Alpha', maxLines: 1, style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black54,
+                      overflow: TextOverflow.ellipsis,
+                    ),),
+                    Row(
+                      spacing: 8,
+                      children: [
+                        Text('${Constants.takaSign}120', style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.themeColor,
+                        ),),
+                        Wrap(
+                          children: [
+                            Icon(Icons.star, color: Colors.amber, size: 16,),
+                            Text('4.5')
+                          ],
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(4),
+                          decoration: BoxDecoration(
+                            color: AppColors.themeColor,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Icon(Icons.favorite_outline, color: Colors.white, size: 16,),
+                        )
+                      ],
+                    )
+                  ],
                 ),
               ),
-              child: Image.asset(AssetPaths.dummyShoePng),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(2.0),
-              child: Column(
-                spacing: 4,
-                children: [
-                  Text('Nike A34RF - New edition 2026 Alpha', maxLines: 1, style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black54,
-                    overflow: TextOverflow.ellipsis,
-                  ),),
-                  Row(
-                    spacing: 8,
-                    children: [
-                      Text('${Constants.takaSign}120', style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.themeColor,
-                      ),),
-                      Wrap(
-                        children: [
-                          Icon(Icons.star, color: Colors.amber, size: 16,),
-                          Text('4.5')
-                        ],
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(4),
-                        decoration: BoxDecoration(
-                          color: AppColors.themeColor,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Icon(Icons.favorite_outline, color: Colors.white, size: 16,),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-            const SizedBox(height: 24),
-          ],
+              const SizedBox(height: 24),
+            ],
+          ),
         ),
       ),
     );

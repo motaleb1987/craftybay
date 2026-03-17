@@ -44,7 +44,7 @@ class CardItem extends StatelessWidget {
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
-                            Text('Color: Red, Size: 42 '),
+                            Text('Color: Red, Size: XL '),
                           ],
                         ),
                       ),
