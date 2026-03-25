@@ -5,6 +5,7 @@ import '../features/auth/presentation/screen/splash_screen.dart';
 import '../features/auth/presentation/screen/verify_otp_screen.dart';
 import '../features/product/presentation/screens/product_details_screen.dart';
 import '../features/product/presentation/screens/product_list_screen.dart';
+import '../features/review/presentation/screen/customer_review_screen.dart';
 import '../features/shared/presentation/screens/main_nav_holder_screen.dart';
 
 class Routes {
@@ -27,6 +28,8 @@ class Routes {
         widget = ProductListScreen(categoryName: categoryName,);
       case ProductDetailsScreen.name:
         widget = ProductDetailsScreen();
+        case CustomerReviewScreen.name:
+        widget = CustomerReviewScreen();
     }
     return  MaterialPageRoute(builder: (context) => widget);
   }

@@ -1,11 +1,12 @@
 import 'package:craftybay/app/extensions/utils_extension.dart';
+import 'package:craftybay/features/product/widgets/size_picker.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../app/app_colors.dart';
 import '../../../shared/presentation/widgets/inc_dec_button.dart';
 import '../../widgets/price_and_cart_section.dart';
 import '../../widgets/product_image_carousel.dart';
-import '../../widgets/text_title_color.dart';
+import '../../widgets/color_picker.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({super.key});
@@ -30,6 +31,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SizedBox(height: 16),
                         Row(
@@ -59,7 +61,12 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                         ],
                                       ),
                                       TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.pushNamed(
+                                            context,
+                                            '/customer-review',
+                                          );
+                                        },
                                         child: Text('Review'),
                                       ),
                                       Container(
@@ -78,29 +85,43 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                       ),
                                     ],
                                   ),
-                                  TextTitleColor(textTitle: 'Color',),
-                                  const SizedBox(height: 8),
-                                  Container(
-                                    height: 30,
-                                    width: 30,
-                                    decoration: BoxDecoration(
-                                      //color: Colors.grey.shade200,
-                                      borderRadius: BorderRadius.circular(40),
-                                      border: Border.all(
-                                        color: Colors.orange.shade300,
-                                        width: 2,
-                                      ),
-                                    ),
-                                    child: Center(child: Text('BK', style: TextStyle(
-                                        fontSize: 10
-                                    ),)),
-                                  )
                                 ],
                               ),
                             ),
                             IncDecButton(onChange: (int value) {}),
                           ],
                         ),
+
+                        ColorPicker(
+                          textTitle: 'Color',
+                          colors: ['red', 'blue', 'green'],
+                          onSelected: (String selectedColor) {},
+                          initialValue: 'blue',
+                        ),
+                        const SizedBox(height: 12),
+                        SizePicker(
+                          textTitle: 'Size',
+                          sizes: ['S', 'M', 'L', 'XL'],
+                          onSelected: (String selectedSize) {},
+                          initialValue: 'M',
+                        ),
+                        const SizedBox(height: 24),
+                        Text(
+                          'Description',
+                          style: context.textTheme.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black54,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          textAlign: TextAlign.justify,
+                          '''Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. It usually begins with:
+                          “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”
+                          ''',
+                          style: TextStyle(color: Colors.black54),
+                        ),
+                        const SizedBox(height: 16),
                       ],
                     ),
                   ),
@@ -114,5 +135,3 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     );
   }
 }
-
-
