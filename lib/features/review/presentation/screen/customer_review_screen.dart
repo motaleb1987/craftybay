@@ -15,19 +15,17 @@ class CustomerReviewScreen extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            child: SingleChildScrollView(
-              child: Padding(
+            child:  Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: 5,
+                    itemCount: 10,
                     itemBuilder: (context, index){
                       return CustomerComments();
                     }
                 ),
               ),
             ),
-          ),
+
           ReviewAddSection()
         ],
       ),
