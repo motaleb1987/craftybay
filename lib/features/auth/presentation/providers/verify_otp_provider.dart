@@ -1,25 +1,26 @@
+
 import 'package:flutter/material.dart';
 
 import '../../../../app/set_up_network_client.dart';
 import '../../../../app/urls.dart';
 import '../../../../core/network_caller/network_caller.dart';
-import '../../data/models/sign_up_params.dart';
+import '../../data/models/verify_otp_params.dart';
 
-class SignUpProvider extends ChangeNotifier {
-  bool _signUpInProgress = false;
-  bool get signUpInProgress => _signUpInProgress;
+class VerifyOtpProvider extends ChangeNotifier {
+  bool _verifyOtpInProgress = false;
+  bool get verifyOtpInProgress => _verifyOtpInProgress;
 
   String? _errorMessage;
   String? get errorMessage => _errorMessage;
 
-  Future<bool> signUp(SignUpParams params) async {
+  Future<bool> verifyOtp(VerifyOtpParams params) async {
     bool isSuccess = false;
 
-    _signUpInProgress = true;
+    _verifyOtpInProgress = true;
     notifyListeners();
 
     final NetworkResponse response = await getNetworkCaller().postRequest(
-      Urls.signUp,
+      Urls.verifyOtpUrl,
       body: params.toJson()
     );
 
@@ -31,7 +32,7 @@ class SignUpProvider extends ChangeNotifier {
       _errorMessage = response.errorMessage;
     }
 
-    _signUpInProgress = false;
+    _verifyOtpInProgress = false;
     notifyListeners();
 
     return isSuccess;
