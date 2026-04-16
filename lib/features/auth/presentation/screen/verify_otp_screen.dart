@@ -1,4 +1,3 @@
-
 import 'package:craftybay/features/auth/data/models/verify_otp_params.dart';
 import 'package:craftybay/features/auth/presentation/providers/verify_otp_provider.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +6,8 @@ import 'package:provider/provider.dart';
 
 import '../../../../app/extensions/utils_extension.dart';
 import '../../../../app/app_colors.dart';
+import '../../../shared/presentation/screens/main_nav_holder_screen.dart';
+import '../../../shared/presentation/widgets/snack_bar_message.dart';
 import '../widgets/app_logo.dart';
 import '../widgets/resend_otp_section.dart';
 
@@ -26,13 +27,9 @@ class VerifyOtpScreen extends StatefulWidget {
 class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
   final PinInputController _otpController = PinInputController();
 
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final VerifyOtpProvider _verifyOtpProvider = VerifyOtpProvider();
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +44,9 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                 key: _formKey,
                 child: Column(
                   children: [
-                    const SizedBox(height: 48,),
+                    const SizedBox(height: 48),
                     AppLogo(width: 100, height: 100),
-                    const SizedBox(height: 16,),
+                    const SizedBox(height: 16),
                     Text(
                       context.l10n.otpCode,
                       style: context.textTheme.titleLarge,
@@ -60,7 +57,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                         context,
                       ).textTheme.bodyLarge?.copyWith(color: Colors.grey),
                     ),
-                    const SizedBox(height: 24,),
+                    const SizedBox(height: 24),
                     MaterialPinField(
                       length: 4,
                       pinController: _otpController,
@@ -73,16 +70,17 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                         spacing: 16,
                         cellSize: Size(50, 50),
                         completeFillColor: Colors.transparent,
-                        completeBorderColor: AppColors.themeColor
+                        completeBorderColor: AppColors.themeColor,
                       ),
                     ),
-                    const SizedBox(height: 16,),
+                    const SizedBox(height: 16),
                     FilledButton(
-                        onPressed: _onTapSignInButton, child: Text('Verify')),
+                      onPressed: _onTapVerifyOtpButton,
+                      child: Text('Verify'),
+                    ),
 
-                    const SizedBox(height: 16,),
+                    const SizedBox(height: 16),
                     ResendOtpSection(),
-
                   ],
                 ),
               ),
@@ -93,31 +91,31 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
     );
   }
 
-  void _onTapSignInButton(){
-    if(_otpController.text.length == 4){
-
+  void _onTapVerifyOtpButton() {
+    if (_otpController.text.length == 4) {
+      _verifyOtp();
     }
   }
 
   Future<void> _verifyOtp() async {
-    VerifyOtpParams(
-        email: widget.email,
-        otp: _otpController.text
+    VerifyOtpParams params = VerifyOtpParams(
+      email: widget.email,
+      otp: _otpController.text,
     );
-    //final bool isSuccess = await _verifyOtpProvider.verifyOtp();
+    final bool isSuccess = await _verifyOtpProvider.verifyOtp(params);
+    if (isSuccess) {
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        MainNavHolderScreen.name,
+        (context) => false,
+      );
+    } else {
+      showSnackBarMessage(context, _verifyOtpProvider.errorMessage!);
+    }
   }
 
-
-  @override
-  void dispose() {
-   _otpController.dispose();
+  @override void dispose() {
+    _otpController.dispose();
     super.dispose();
   }
-
 }
-
-
-
-
-
-
