@@ -1,5 +1,4 @@
-import 'package:craftybay/features/auth/data/models/verify_otp_params.dart';
-import 'package:craftybay/features/auth/presentation/providers/verify_otp_provider.dart';
+
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
@@ -7,7 +6,10 @@ import 'package:provider/provider.dart';
 import '../../../../app/extensions/utils_extension.dart';
 import '../../../../app/app_colors.dart';
 import '../../../shared/presentation/screens/main_nav_holder_screen.dart';
+import '../../../shared/presentation/widgets/center_progress_indicator.dart';
 import '../../../shared/presentation/widgets/snack_bar_message.dart';
+import '../../data/models/verify_otp_params.dart';
+import '../providers/verify_otp_provider.dart';
 import '../widgets/app_logo.dart';
 import '../widgets/resend_otp_section.dart';
 
@@ -74,9 +76,16 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    FilledButton(
-                      onPressed: _onTapVerifyOtpButton,
-                      child: Text('Verify'),
+                    Consumer<VerifyOtpProvider>(
+                      builder: (context, _, _) {
+                        if (_verifyOtpProvider.verifyOtpInProgress) {
+                          return const CenterProgressIndicator();
+                        }
+                        return FilledButton(
+                          onPressed: _onTapVerifyOtpButton,
+                          child: Text('Verify'),
+                        );
+                      }
                     ),
 
                     const SizedBox(height: 16),

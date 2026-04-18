@@ -1,10 +1,11 @@
+import 'package:craftybay/app/controllers/auth_controller.dart';
+import 'package:craftybay/features/shared/data/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../app/set_up_network_client.dart';
 import '../../../../app/urls.dart';
 import '../../../../core/network_caller/network_caller.dart';
 import '../../data/models/sign_in_params.dart';
-
 
 class SignInProvider extends ChangeNotifier {
   bool _signInProgress = false;
@@ -21,13 +22,17 @@ class SignInProvider extends ChangeNotifier {
 
     final NetworkResponse response = await getNetworkCaller().postRequest(
       Urls.signInUrl,
-      body: params.toJson()
+      body: params.toJson(),
     );
 
-    if(response.isSuccess){
+    if (response.isSuccess) {
+      // Save user data and access token
+      UserModel userModel = UserModel.fromJson(response.body!['data']['user']);
+      String accessToken = response.body!['data']['token'];
+      await AuthController.saveUserData(accessToken, userModel);
+
       _errorMessage = null;
       isSuccess = true;
-
     } else {
       _errorMessage = response.errorMessage;
     }
