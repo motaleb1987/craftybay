@@ -2,9 +2,9 @@ class HomeSliderModel {
   final String id;
   final String photoUrl;
   final String description;
-  final String product;
-  final String brand;
-  final String category;
+  final String? product;
+  final String? brand;
+  final String? category;
 
   HomeSliderModel({
     required this.id,
