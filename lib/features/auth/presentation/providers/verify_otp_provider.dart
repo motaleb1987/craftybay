@@ -1,4 +1,6 @@
 
+import 'package:craftybay/app/controllers/auth_controller.dart';
+import 'package:craftybay/features/shared/data/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../app/set_up_network_client.dart';
@@ -25,6 +27,12 @@ class VerifyOtpProvider extends ChangeNotifier {
     );
 
     if(response.isSuccess){
+      // Save user data and access token
+      UserModel userModel = UserModel.fromJson(response.body!['data']['user']);
+      String accessToken = response.body!['data']['token'];
+
+      await AuthController.saveUserData(accessToken, userModel);
+
       _errorMessage = null;
       isSuccess = true;
 

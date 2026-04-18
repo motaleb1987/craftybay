@@ -121,6 +121,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
      final bool isSuccess = await _signInProvider.signIn(params);
 
+
      if(isSuccess){
        Navigator.pushNamedAndRemoveUntil(context, MainNavHolderScreen.name, (context)=>false);
      }else{
