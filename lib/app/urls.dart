@@ -1,4 +1,4 @@
-class Urls{
+class Urls {
   static const String _baseUrl = 'https://ecom-rs8e.onrender.com/api';
   static const String signUp = '$_baseUrl/auth/signup';
   static const String verifyOtpUrl = '$_baseUrl/auth/verify-otp';
@@ -6,4 +6,6 @@ class Urls{
 
   static const String homeSlidersUrl = '$_baseUrl/slides';
 
+  static String getCategoriesUrl(int pageSize, int pageNo) =>
+      '$_baseUrl/categories?page=$pageNo&count=$pageSize';
 }
