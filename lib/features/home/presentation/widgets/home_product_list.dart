@@ -14,7 +14,8 @@ class HomeProductList extends StatelessWidget {
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: 10,
-        itemBuilder: (context, index)=> ProductCard(),
+        //itemBuilder: (context, index)=> ProductCard(),
+        itemBuilder: (context, index)=> SizedBox(),
         separatorBuilder: (context, index) => SizedBox(width: 8,),
 
       ),

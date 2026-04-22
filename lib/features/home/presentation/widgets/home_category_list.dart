@@ -1,5 +1,5 @@
 import 'package:craftybay/features/shared/presentation/widgets/center_progress_indicator.dart';
-import 'package:craftybay/features/shared/provider/category_list_provider.dart';
+import 'package:craftybay/features/shared/presentation/providers/category_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,3 +1,4 @@
+import 'package:craftybay/features/shared/data/models/category_model.dart';
 import 'package:flutter/material.dart';
 import '../features/auth/presentation/screen/sign_in_screen.dart';
 import '../features/auth/presentation/screen/sign_up_screen.dart';
@@ -25,8 +26,8 @@ class Routes {
       case MainNavHolderScreen.name:
         widget = MainNavHolderScreen();
       case ProductListScreen.name:
-        final categoryName = settings.arguments as String;
-        widget = ProductListScreen(categoryName: categoryName,);
+        final category = settings.arguments as CategoryModel;
+        widget = ProductListScreen(category: category,);
       case ProductDetailsScreen.name:
         widget = ProductDetailsScreen();
         case CustomerReviewScreen.name:

@@ -1,12 +1,12 @@
 import 'package:craftybay/app/extensions/utils_extension.dart';
-import 'package:craftybay/features/product/widgets/size_picker.dart';
+import 'package:craftybay/features/product/presentation/widgets/size_picker.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../app/app_colors.dart';
 import '../../../shared/presentation/widgets/inc_dec_button.dart';
-import '../../widgets/price_and_cart_section.dart';
-import '../../widgets/product_image_carousel.dart';
-import '../../widgets/color_picker.dart';
+import '../widgets/price_and_cart_section.dart';
+import '../widgets/product_image_carousel.dart';
+import '../widgets/color_picker.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({super.key});

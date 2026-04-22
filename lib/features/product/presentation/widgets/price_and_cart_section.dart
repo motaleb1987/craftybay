@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../app/app_colors.dart';
-import '../../../../app/constants.dart';
+import '../../../../../app/app_colors.dart';
+import '../../../../../app/constants.dart';
 
 class PriceAndCartSection extends StatelessWidget {
   const PriceAndCartSection({

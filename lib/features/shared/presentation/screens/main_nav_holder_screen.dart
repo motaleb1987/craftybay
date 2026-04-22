@@ -1,6 +1,6 @@
 import 'package:craftybay/app/app_colors.dart';
 import 'package:craftybay/features/home/presentation/providers/home_slider_provider.dart';
-import 'package:craftybay/features/shared/provider/category_list_provider.dart';
+import 'package:craftybay/features/shared/presentation/providers/category_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

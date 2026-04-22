@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import '../features/auth/presentation/providers/main_nav_provider.dart';
 import '../features/auth/presentation/screen/splash_screen.dart';
 import '../features/home/presentation/providers/home_slider_provider.dart';
-import '../features/shared/provider/category_list_provider.dart';
+import '../features/shared/presentation/providers/category_list_provider.dart';
 import '../l10n/app_localizations.dart';
 import 'app_theme.dart';
 import 'routes.dart';

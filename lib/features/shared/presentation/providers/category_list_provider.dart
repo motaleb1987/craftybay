@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../app/set_up_network_client.dart';
-import '../../../app/urls.dart';
-import '../../../core/network_caller/network_caller.dart';
-import '../data/models/category_model.dart';
+import '../../../../app/set_up_network_client.dart';
+import '../../../../app/urls.dart';
+import '../../../../core/network_caller/network_caller.dart';
+import '../../data/models/category_model.dart';
 
 class CategoryListProvider extends ChangeNotifier {
   final int _pageCount = 30;
