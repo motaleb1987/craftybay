@@ -27,10 +27,12 @@ class CategoryListProvider extends ChangeNotifier {
   String? _errorMessage;
   String? get errorMessage => _errorMessage;
 
-  Future<bool> getCategoryList() async {
+  Future<bool> getCategories() async {
     if (_lastPage != null && _currentPage >= _lastPage!) {
       return false;
     }
+
+    bool isSuccess = false;
 
     _currentPage++;
 
@@ -47,6 +49,7 @@ class CategoryListProvider extends ChangeNotifier {
 
     if (response.isSuccess) {
       List<CategoryModel> categories = [];
+      _lastPage = response.body!['data']['last_page'];
       for (Map<String, dynamic> category in response.body!['data']['results']) {
         categories.add(CategoryModel.fromJson(category));
       }
@@ -69,5 +72,5 @@ class CategoryListProvider extends ChangeNotifier {
 
   bool get isInitialLoading => _currentPage == 1;
 
-  bool get isLoading => _getMoreDataInProgress || _getMoreDataInProgress;
+  bool get isLoading => _getInitialDataInProgress || _getMoreDataInProgress;
 }

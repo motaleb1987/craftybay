@@ -1,5 +1,6 @@
 import 'package:craftybay/app/app_colors.dart';
 import 'package:craftybay/features/home/presentation/providers/home_slider_provider.dart';
+import 'package:craftybay/features/shared/provider/category_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -32,7 +33,8 @@ class _MainNavHolderScreenState extends State<MainNavHolderScreen> {
     // TODO: implement initState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async{
-      await context.read<HomeSliderProvider>().getHomeSliders();
+       context.read<HomeSliderProvider>().getHomeSliders();
+       context.read<CategoryListProvider>().getCategories();
     });
   }
 

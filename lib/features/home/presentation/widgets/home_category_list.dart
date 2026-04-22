@@ -1,4 +1,7 @@
+import 'package:craftybay/features/shared/presentation/widgets/center_progress_indicator.dart';
+import 'package:craftybay/features/shared/provider/category_list_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../shared/presentation/widgets/category_card.dart';
 
@@ -11,17 +14,30 @@ class HomeCategoryList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 130,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return CategoryCard();
-        },
-        separatorBuilder: (context, index) {
-          return const SizedBox(width: 6);
-        },
+      child: Consumer<CategoryListProvider>(
+        builder: (context, categoryListProvider, _) {
+          if(categoryListProvider.getInitialDataInProgress){
+            return CenterProgressIndicator();
+          }
+          return ListView.separated(
+            scrollDirection: Axis.horizontal,
+            itemCount: getCategoryLength(categoryListProvider.categoryList.length),
+            itemBuilder: (context, index) {
+              return CategoryCard(
+                categoryModel: categoryListProvider.categoryList[index],
+              );
+            },
+            separatorBuilder: (context, index) {
+              return const SizedBox(width: 6);
+            },
 
+          );
+        }
       ),
     );
+  }
+  
+  int getCategoryLength(int length){
+    return length > 10 ? 10 : length;
   }
 }
