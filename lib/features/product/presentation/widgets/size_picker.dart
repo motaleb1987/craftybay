@@ -37,11 +37,8 @@ class _SizePickerState extends State<SizePicker> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          widget.textTitle,
-          style: context.textTheme.bodyLarge?.copyWith(
-            fontWeight: FontWeight.w600,
-            color: Colors.black54,
-          ),
+          'Size',
+          style: context.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
         ),
         SizedBox(height: 8),
         SizedBox(

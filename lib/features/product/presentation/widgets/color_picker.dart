@@ -5,13 +5,12 @@ import 'package:flutter/material.dart';
 class ColorPicker extends StatefulWidget {
   const ColorPicker({
     super.key,
-    required this.textTitle,
     required this.colors,
     required this.onSelected,
     this.initialValue,
   });
 
-  final String textTitle;
+
   final List<String> colors;
   final Function(String) onSelected;
   final String? initialValue;
@@ -37,11 +36,8 @@ class _ColorPickerState extends State<ColorPicker> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          widget.textTitle,
-          style: context.textTheme.bodyLarge?.copyWith(
-            fontWeight: FontWeight.w600,
-            color: Colors.black54,
-          ),
+          'Color',
+          style: context.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
         ),
         SizedBox(height: 8),
         SizedBox(

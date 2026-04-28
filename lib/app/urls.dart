@@ -11,4 +11,9 @@ class Urls {
 
   static String getProductsUrl(int pageSize, int pageNo) =>
       '$_baseUrl/products?page=$pageNo&count=$pageSize';
+
+  static String getProductDetailsUrl(String productId) =>
+      '$_baseUrl/products/id/$productId';
+
+  static const String addToCartUrl = '$_baseUrl/cart';
 }

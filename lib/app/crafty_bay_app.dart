@@ -15,6 +15,9 @@ import 'routes.dart';
 class CraftyBayApp extends StatelessWidget {
   const CraftyBayApp({super.key});
 
+  static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -34,6 +37,7 @@ class CraftyBayApp extends StatelessWidget {
             builder: (context, themeProvider, _) {
               return MaterialApp(
                 title: 'Crafty Bay',
+                navigatorKey: navigatorKey,
                 initialRoute: SplashScreen.name,
                 onGenerateRoute:  Routes.onGenerateRoute,
                 theme: AppTheme.lightTheme,

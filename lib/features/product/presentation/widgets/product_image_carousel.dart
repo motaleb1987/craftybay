@@ -3,14 +3,15 @@ import 'package:craftybay/app/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class ProductImageCarousel extends StatefulWidget {
-  const ProductImageCarousel({super.key});
+  const ProductImageCarousel({super.key, required this.images});
+  final List<String> images;
 
   @override
   State<ProductImageCarousel> createState() => _ProductImageCarouselState();
 }
 
 class _ProductImageCarouselState extends State<ProductImageCarousel> {
-  ValueNotifier<int> _selectedPage = ValueNotifier(0);
+  final ValueNotifier<int> _selectedPage = ValueNotifier(0);
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +25,17 @@ class _ProductImageCarouselState extends State<ProductImageCarousel> {
             autoPlay: true,
             autoPlayInterval: const Duration(seconds: 3),
           ),
-          items: [1, 2, 3, 4, 5].map((i) {
+          items: widget.images.map((url) {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
                   width: MediaQuery.of(context).size.width,
                   color: Colors.grey.withAlpha(50),
                   alignment: Alignment.center,
-                  child: Text('text $i', style: TextStyle(fontSize: 16.0)),
+                  child: Image.network(
+                    url,
+                    width: double.infinity,
+                  ),
                 );
               },
             );
@@ -49,16 +53,13 @@ class _ProductImageCarouselState extends State<ProductImageCarousel> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 spacing: 4,
                 children: [
-                  for (int i = 0; i < 5; i++)
+                  for (int i = 0; i < widget.images.length; i++)
                     Container(
                       width: 12,
                       height: 12,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: value == i
-                            ? AppColors.themeColor
-                            : Colors.white,
-
+                        color: value == i ? AppColors.themeColor : Colors.white,
                       ),
                     ),
                 ],

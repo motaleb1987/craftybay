@@ -72,7 +72,7 @@ class CardItem extends StatelessWidget {
                         ),
                       ),
                       IncDecButton(
-                        //initialValue: 1,
+                        maxValue: 1,
                         onChange: (int value) {
                           print(value);
                         },

@@ -1,14 +1,16 @@
 import 'package:craftybay/app/app_colors.dart';
-import 'package:craftybay/features/home/presentation/providers/home_slider_provider.dart';
-import 'package:craftybay/features/shared/presentation/providers/category_list_provider.dart';
+import 'package:craftybay/features/auth/presentation/screen/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../app/controllers/auth_controller.dart';
 import '../../../auth/presentation/providers/main_nav_provider.dart';
 import '../../../cart/presentation/screen/cart_screen.dart';
 import '../../../category/presentation/screens/category_list_screen.dart';
+import '../../../home/presentation/providers/home_slider_provider.dart';
 import '../../../home/presentation/screens/home_screen.dart';
 import '../../../wish_list/presentation/screens/wish_list_screen.dart';
+import '../providers/category_list_provider.dart';
 
 class MainNavHolderScreen extends StatefulWidget {
   const MainNavHolderScreen({super.key});
@@ -49,7 +51,17 @@ class _MainNavHolderScreenState extends State<MainNavHolderScreen> {
             selectedItemColor: AppColors.themeColor,
             unselectedItemColor: Colors.grey,
             showUnselectedLabels: true,
-            onTap: mainNavProvider.setIndex,
+            onTap: (int index) async {
+              if(mainNavProvider.shouldCheckIfUserLoggedIn(index)){
+                final isLoggedIn = await AuthController.isLoggedIn();
+                if(isLoggedIn == false){
+                  Navigator.pushNamed(context, SignInScreen.name);
+                  return;
+                }
+              }
+              mainNavProvider.setIndex(index);
+            },
+            //mainNavProvider.setIndex,
             currentIndex: mainNavProvider.selectedIndex,
             items: [
               BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
