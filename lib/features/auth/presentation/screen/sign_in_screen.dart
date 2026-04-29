@@ -9,6 +9,7 @@ import '../../../shared/presentation/widgets/snack_bar_message.dart';
 import '../../data/models/sign_in_params.dart';
 import '../providers/sign_in_provider.dart';
 import '../widgets/app_logo.dart';
+import 'sign_up_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -143,7 +144,7 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   void _onTapSignUpButton() {
-    Navigator.pop(context);
+    Navigator.pushNamed(context, SignUpScreen.name);
   }
 
   @override

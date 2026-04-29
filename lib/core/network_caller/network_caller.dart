@@ -47,7 +47,7 @@ class NetworkCaller {
         return NetworkResponse(
           statusCode: response.statusCode,
           isSuccess: false,
-          errorMessage: decodedJson['message'],
+          errorMessage: decodedJson['msg'],
           body: null,
         );
       }
@@ -64,6 +64,7 @@ class NetworkCaller {
   Future<NetworkResponse> postRequest(
     String url, {
     Map<String, dynamic>? body,
+        bool fromLogin = false
   }) async {
     try {
       final Uri uri = Uri.parse(url);
@@ -88,7 +89,9 @@ class NetworkCaller {
         );
       } else if(response.statusCode == 401){
         // Unauthorized
-        onUnauthorize();
+        if(!fromLogin) {
+          onUnauthorize();
+        }
         return NetworkResponse(
           statusCode: response.statusCode,
           isSuccess: false,
@@ -100,7 +103,7 @@ class NetworkCaller {
         return NetworkResponse(
           statusCode: response.statusCode,
           isSuccess: false,
-          errorMessage: decodedJson['message'],
+          errorMessage: decodedJson['msg'],
         );
       }
     } on Exception catch (e) {
@@ -153,7 +156,7 @@ class NetworkCaller {
         return NetworkResponse(
           statusCode: response.statusCode,
           isSuccess: false,
-          errorMessage: decodedJson['message'],
+          errorMessage: decodedJson['msg'],
         );
       }
     } on Exception catch (e) {
@@ -206,7 +209,7 @@ class NetworkCaller {
         return NetworkResponse(
           statusCode: response.statusCode,
           isSuccess: false,
-          errorMessage: decodedJson['message'],
+          errorMessage: decodedJson['msg'],
         );
       }
     } on Exception catch (e) {
@@ -259,7 +262,7 @@ class NetworkCaller {
         return NetworkResponse(
           statusCode: response.statusCode,
           isSuccess: false,
-          errorMessage: decodedJson['message'],
+          errorMessage: decodedJson['msg'],
         );
       }
     } on Exception catch (e) {

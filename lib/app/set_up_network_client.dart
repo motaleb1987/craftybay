@@ -1,4 +1,3 @@
-
 // Best practice => Service Locator/Dependency Injection Manager
 
 import 'package:craftybay/app/controllers/auth_controller.dart';
@@ -9,18 +8,23 @@ import '../core/network_caller/network_caller.dart';
 
 NetworkCaller getNetworkCaller() {
   return NetworkCaller(
-      headers: () =>{
-        'Content-Type': 'application/json',
-      },
-      onUnauthorize: () async {
-        // Logout from app
-        // Clear user Data
-        // Redirect to the sign in ui
-        await AuthController.clearUserData();
-        CraftyBayApp.navigatorKey.currentState!.pushNamed(SignInScreen.name);
+    headers: ()  {
+      final headers = {'Content-Type': 'application/json'};
+      if (AuthController.accessToken != null){
+        headers['token'] = '${AuthController.accessToken}';
       }
+      return headers;
+    },
+
+
+    onUnauthorize: () async {
+      // Logout from app
+      // Clear user Data
+      // Redirect to the sign in ui
+      await AuthController.clearUserData();
+      CraftyBayApp.navigatorKey.currentState!.pushNamed(SignInScreen.name);
+    },
   );
 }
-
 
 // Uses => getNetworkCaller.getRequest/postRequest.....
