@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../app/app_colors.dart';
 import '../../../../app/constants.dart';
+import '../providers/cart_list_provider.dart';
 
 class TotalPriceAndCheckoutSection extends StatelessWidget {
   const TotalPriceAndCheckoutSection({
@@ -28,7 +30,7 @@ class TotalPriceAndCheckoutSection extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: Colors.black54
               ),),
-              Text('${Constants.takaSign}120', style: TextStyle(
+              Text('${Constants.takaSign}${context.watch<CartListProvider>().totalPrice}', style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
                   color: AppColors.themeColor

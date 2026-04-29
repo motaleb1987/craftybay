@@ -1,14 +1,16 @@
 import 'package:craftybay/app/extensions/utils_extension.dart';
+import 'package:craftybay/features/cart/data/models/cart_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../../../app/app_colors.dart';
 import '../../../../app/asset_paths.dart';
 import '../../../../app/constants.dart';
 import '../../../shared/presentation/widgets/inc_dec_button.dart';
 
 class CardItem extends StatelessWidget {
-  const CardItem({
-    super.key,
-  });
+  const CardItem({super.key, required this.cartModel});
+
+  final CartModel cartModel;
 
   @override
   Widget build(BuildContext context) {
@@ -32,24 +34,26 @@ class CardItem extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Column(
-                          crossAxisAlignment:
-                          CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Lotto New Shoe DF336K 2026 Edition',
+                              cartModel.productModel.title,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
-                              style: context.textTheme.bodyLarge
-                                  ?.copyWith(
+                              style: context.textTheme.bodyLarge?.copyWith(
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
-                            Text('Color: Red, Size: XL '),
+                            Text(
+                              'Color: ${cartModel.color ?? 'N/A'} Size: ${cartModel.size ?? 'N/A'} ',
+                            ),
                           ],
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          // TODO: Home work => delete from api and update into provider
+                        },
                         icon: Icon(
                           Icons.delete,
                           color: Colors.red[200],
@@ -60,13 +64,11 @@ class CardItem extends StatelessWidget {
                   ),
                   SizedBox(height: 16),
                   Row(
-                    mainAxisAlignment:
-                    MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '${Constants.takaSign}120',
-                        style: context.textTheme.bodyLarge
-                            ?.copyWith(
+                        '${Constants.takaSign}${cartModel.productModel.currentPrice}',
+                        style: context.textTheme.bodyLarge?.copyWith(
                           color: AppColors.themeColor,
                           fontWeight: FontWeight.bold,
                         ),
@@ -74,7 +76,9 @@ class CardItem extends StatelessWidget {
                       IncDecButton(
                         maxValue: 1,
                         onChange: (int value) {
-                          print(value);
+                          context
+                              .read()
+                              .updateCartItemQuantity(cartModel.id, value);
                         },
                       ),
                     ],
