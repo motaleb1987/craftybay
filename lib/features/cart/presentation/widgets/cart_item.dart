@@ -1,5 +1,7 @@
 import 'package:craftybay/app/extensions/utils_extension.dart';
 import 'package:craftybay/features/cart/data/models/cart_model.dart';
+import 'package:craftybay/features/cart/presentation/providers/cart_list_provider.dart';
+import 'package:craftybay/features/shared/presentation/widgets/app_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../app/app_colors.dart';
@@ -22,7 +24,7 @@ class CardItem extends StatelessWidget {
       child: Row(
         spacing: 4,
         children: [
-          Image.asset(AssetPaths.dummyShoePng, width: 100),
+          AppNetworkImage(url: _getImage(cartModel.productModel.images), width: 100, height: 100, fit: BoxFit.scaleDown ,),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -74,10 +76,11 @@ class CardItem extends StatelessWidget {
                         ),
                       ),
                       IncDecButton(
-                        maxValue: 1,
+                        initialValue: 1,
+                        maxValue: 5,
                         onChange: (int value) {
                           context
-                              .read()
+                              .read<CartListProvider>()
                               .updateCartItemQuantity(cartModel.id, value);
                         },
                       ),
@@ -90,5 +93,8 @@ class CardItem extends StatelessWidget {
         ],
       ),
     );
+  }
+  String _getImage(List<String> urls){
+    return urls.isNotEmpty ? urls.first : '';
   }
 }

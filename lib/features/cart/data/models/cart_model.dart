@@ -2,7 +2,7 @@
 import 'package:craftybay/features/product/data/model/product_model.dart';
 
 class CartModel {
-  final String? id;
+  final String id;
   final ProductModel productModel;
    int quantity;
   final String? color;
