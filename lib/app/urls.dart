@@ -15,6 +15,9 @@ class Urls {
   static String getProductDetailsUrl(String productId) =>
       '$_baseUrl/products/id/$productId';
 
+  static String getProductSlugUrl(String productSlug) =>
+      '$_baseUrl/products/$productSlug';
+
   static const String addToCartUrl = '$_baseUrl/cart';
   static const String cartListUrl = '$_baseUrl/cart';
 }
